@@ -5,29 +5,30 @@ IE-0117 Laboratorio 05
 los camibios y manejo de la logica de las funciones se manejan en este archivo.
 */
 #include "Funciones.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 //funcion para crear un arreglo con memoria dinamica
 int* crearArreglo(int tamano) {
-    int* arreglo = (int*)malloc(tamano * sizeof(int));
+    int* arreglo = calloc(tamano, sizeof(int));
+
     if (arreglo == NULL) {
         printf("Error al asignar memoria.\n");
         exit(1);
     }
-    return arreglo;
 
-    //liberar memoria
-    free(arreglo);
+    return arreglo;
 }
+
 
 //funcion para agregar un elemento al arreglo
 void agregarElemento(int* arreglo, int tamano, int elemento) {
     for (int i = 0; i < tamano; i++) {
-        if (*arreglo == 0) { // logica con punteros 
-            *arreglo = elemento;
+        if (*(arreglo + i) == 0) { // logica con punteros 
+            *(arreglo + i) = elemento;
             return;
         }
     }
-    printf("No hay espacio disponible para agregar el elemento.\n");
 }
 
 //funcion para eliminar un elemento del arreglo
@@ -54,7 +55,7 @@ int obtenerElemento(int* arreglo, int tamano, int indice) {
 void imprimirArreglo(int* arreglo, int tamano) {
     printf("Arreglo: ");
     for (int i = 0; i < tamano; i++) {
-        printf("%d ", *(arreglo + i)); // logica con punteros 
+        printf("%d ", *(arreglo + i)); // imprime el elemento en la posicion del arrrglo.
     }
     printf("\n");
 }

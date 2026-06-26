@@ -5,7 +5,7 @@
 //funcion principal
 int main() {
     int tamano;
-    printf("Ingrese el tamaño del arreglo: ");
+    printf("Ingrese el tamano del arreglo: ");
     scanf("%d", &tamano);
 
     //crear arreglo con memoria dinamica
@@ -38,8 +38,7 @@ int main() {
     int elementoObtenido = obtenerElemento(arreglo, tamano, indice);
     printf("Elemento en el indice %d: %d\n", indice, elementoObtenido);
 
-    //liberar memoria del arreglo
-    free(arreglo);
-
+   
+    free(arreglo); // liberar memoria del arreglo
     return 0;
 }
