@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Funciones.h"
 #include "Stack.h"
+#include "ListaEnlazada.h"
 
 // Funcion principal
 int main() {
@@ -79,6 +80,27 @@ int main() {
     }
 
     liberarStack(&pila);
+
+    // Prueba de la lista enlazada
+    Nodo* lista = NULL;
+
+    insertarInicio(&lista, 10);
+    insertarFinal(&lista, 20);
+    insertarFinal(&lista, 30);
+
+    printf("\n===== PRUEBAS DE LISTA ENLAZADA =====\n");
+    imprimirLista(lista);
+
+    if (buscarElementoLista(lista, 20)) {
+        printf("El elemento 20 fue encontrado.\n");
+    }
+
+    eliminarElementoLista(&lista, 20);
+
+    printf("Lista despues de eliminar 20:\n");
+    imprimirLista(lista);
+
+    liberarLista(&lista);
 
     return 0;
 }
