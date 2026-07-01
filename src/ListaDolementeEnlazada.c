@@ -56,3 +56,36 @@ void insertarFinalDoble(NodoDoble **cabeza, int dato) {
     actual->siguiente = nuevo;
     nuevo->anterior = actual;
 }
+
+// Insertar en una posición especifica
+void insertarPosicionDoble(NodoDoble **cabeza, int dato, int posicion) {// pasamos como parametros el head, el dato y la posicion especifica
+
+    if (posicion == 0) {// verificamos, en este caso es para insertar al inicio.
+        insertarInicioDoble(cabeza, dato);// este es un ejemplo de callback, para insertar al inicio.
+        return;
+    }
+
+    NodoDoble* actual = *cabeza;// buscamos la cabeza para luego recorrer.
+
+    for (int i = 0; i < posicion - 1 && actual != NULL; i++) {// recorremos hasta encontar.
+        actual = actual->siguiente;// cuando encuentra, se le asigna al siguinete.
+    }
+
+    if (actual == NULL) {//verificmps que no sea nulo el actual.
+        printf("Posición fuera de rango.\n");
+        return;
+    }
+
+    NodoDoble* nuevo = crearNodoDoble(dato);//entonces creamos el nodo con el dato.
+
+    nuevo->siguiente = actual->siguiente;
+    nuevo->anterior = actual;//le asignamos el nodo anterior al actual.
+
+    if (actual->siguiente != NULL)// si no es nulo, asigna el nodo anterior al nuevo.
+        actual->siguiente->anterior = nuevo;
+
+    actual->siguiente = nuevo;// asignamos el nodo siguiente al nuevo.
+
+}
+
+//
