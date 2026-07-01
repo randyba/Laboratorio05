@@ -33,3 +33,26 @@ void insertarInicioDoble(NodoDoble **cabeza, int dato) {
 
     *cabeza = nuevo;
 }
+
+// Insertar al final
+void insertarFinalDoble(NodoDoble **cabeza, int dato) {
+
+    NodoDoble* nuevo = crearNodoDoble(dato);// se crea un nuevo nodo doble
+
+    if (nuevo == NULL)//verifica que este nodo no sea nulo
+        return;
+
+    if (*cabeza == NULL) {//verifica si el nodo cabeza es nulo, si es asi se le asigna el nuevo 
+        *cabeza = nuevo;
+        return;
+    }
+
+    NodoDoble* actual = *cabeza;//se crea un nodo actual que apunta al nodo cabeza
+
+    while (actual->siguiente != NULL) {//verifica que el siguiente tenga donde apuntar.
+        actual = actual->siguiente;
+    }
+
+    actual->siguiente = nuevo;
+    nuevo->anterior = actual;
+}
