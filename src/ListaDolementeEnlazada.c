@@ -88,4 +88,42 @@ void insertarPosicionDoble(NodoDoble **cabeza, int dato, int posicion) {// pasam
 
 }
 
-//
+//eliminar un elemento basado en la data
+void eliminarDatoDoble(NodoDoble **cabeza, int dato) {
+    NodoDoble* actual = *cabeza;
+
+    while (actual != NULL && actual->dato != dato) {// recorremos la lista hasta encontrar el dato.
+        actual = actual->siguiente;
+    }
+
+    if (actual == NULL) {// verificafr que se encuentea.
+        printf("Dato no encontrado.\n");
+        return;
+    }
+
+    if (actual->anterior != NULL)
+        actual->anterior->siguiente = actual->siguiente;//asignamos el nodo siguiente al nodo anterior del actual.
+    else
+        *cabeza = actual->siguiente;//sino, asignamos el nodo siguiente al nodo head
+
+    if (actual->siguiente != NULL)
+        actual->siguiente->anterior = actual->anterior;//asignamos el nodo anterior al nodo siguiente del actual.
+
+    free(actual);
+}
+
+//buscar un elemento
+int buscarDatoDoble(NodoDoble *cabeza, int dato) {
+    NodoDoble* actual = cabeza;// buscamos el head
+    int posicion = 0;// deffinimos una variable para gguardar la posicion.
+
+    while (actual != NULL) {// mientras sea valido.
+        if (actual->dato == dato)//comenzamos a buscar la coincidencia.
+            return posicion;// una ez enconada, retorna.
+
+        actual = actual->siguiente;// y definimos que el nodo actual sea el siguiente.
+        posicion++;// le sumamos uno a la posicion, para ir avanzando en la lista.
+    }
+
+    return -1; // No encontrado
+}
