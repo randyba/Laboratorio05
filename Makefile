@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g
 
-SRC = src/main.c src/Funciones.c src/Stack.c
+SRC = src/main.c src/ArreglosDinamicos.c src/Stack.c src/ListaEnlazada.c src/ListaDolementeEnlazada.c
 OUT = main
 
 all: $(OUT)

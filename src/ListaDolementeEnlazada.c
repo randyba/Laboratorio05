@@ -112,14 +112,14 @@ void eliminarDatoDoble(NodoDoble **cabeza, int dato) {
     free(actual);
 }
 
-//buscar un elemento
+//buscar un elemento por su data
 int buscarDatoDoble(NodoDoble *cabeza, int dato) {
     NodoDoble* actual = cabeza;// buscamos el head
     int posicion = 0;// deffinimos una variable para gguardar la posicion.
 
     while (actual != NULL) {// mientras sea valido.
         if (actual->dato == dato)//comenzamos a buscar la coincidencia.
-            return posicion;// una ez enconada, retorna.
+            return posicion;// una vez enconada, retorna la posicion.
 
         actual = actual->siguiente;// y definimos que el nodo actual sea el siguiente.
         posicion++;// le sumamos uno a la posicion, para ir avanzando en la lista.
@@ -164,4 +164,18 @@ void imprimirListaDobleAtras(NodoDoble *cabeza) {
     }
 
     printf("\n");
+}
+
+// Liberar memoria de la lista
+void liberarListaDoble(NodoDoble **cabeza) {
+    NodoDoble* actual = *cabeza;
+    NodoDoble* siguiente;
+
+    while (actual != NULL) {
+        siguiente = actual->siguiente;
+        free(actual);
+        actual = siguiente;
+    }
+
+    *cabeza = NULL;
 }

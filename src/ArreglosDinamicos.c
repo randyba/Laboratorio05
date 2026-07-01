@@ -11,7 +11,7 @@ Los cambios y manejo de la logica de las funciones se manejan en este archivo.
 
 // Funcion para crear un arreglo con memoria dinamica
 int* crearArreglo(int tamano) {
-    int* arreglo = (int*)malloc(tamano * sizeof(int));
+    int* arreglo = calloc(tamano, sizeof(int));
 
     if (arreglo == NULL) {
         printf("Error al asignar memoria.\n");
