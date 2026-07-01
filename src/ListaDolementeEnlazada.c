@@ -127,3 +127,41 @@ int buscarDatoDoble(NodoDoble *cabeza, int dato) {
 
     return -1; // No encontrado
 }
+
+//imprimir la lista hacia adelante
+void imprimirListaDobleAdelante(NodoDoble *cabeza) {
+    NodoDoble* actual = cabeza;
+
+    printf("Lista doblemente enlazada: ");
+
+    while (actual != NULL) {// con forme vamos reecorriendo, vamos imprimiendo.
+        printf("%d ", actual->dato);
+        actual = actual->siguiente;
+    }
+
+    printf("\n");
+}
+
+// imprimir la lista hacia atras
+void imprimirListaDobleAtras(NodoDoble *cabeza) {
+    NodoDoble* actual = cabeza;
+
+    if (actual == NULL) {// verificamos que haya algo.
+        printf("Lista vacia.\n");
+        return;
+    }
+
+    // Ir al final de la lista
+    while (actual->siguiente != NULL) {// nos vamos directamente al final, sabiendo que el ultimo apuna a null.
+        actual = actual->siguiente;
+    }
+
+    printf("Lista doblemente enlazada (reversa): ");
+
+    while (actual != NULL) {
+        printf("%d ", actual->dato);//empezamos a imprimr
+        actual = actual->anterior;// nos vamos hacia atras por medio del nodo anterior.
+    }
+
+    printf("\n");
+}
